@@ -255,22 +255,24 @@ body {font-family: "Segoe UI",Arial,sans-serif;}
         function setBounds() {
         }
         
+
 map.createPane('pane_GoogleSatellite_0');
 map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
 
-var layer_GoogleSatellite_0 = L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+var layer_GoogleSatellite_0 = L.tileLayer.wms(
+    'https://webapps.sit.puglia.it/arcgis/services/BaseMaps/Ortofoto2023/ImageServer/WMSServer',
     {
+        layers: '0',
+        format: 'image/jpeg',
+        transparent: false,
+        version: '1.3.0',
         pane: 'pane_GoogleSatellite_0',
-        opacity: 1,
-        attribution: '&copy; OpenStreetMap contributors',
-        minZoom: 1,
-        maxZoom: 19
+        attribution: 'Ortofoto 2023 - Regione Puglia'
     }
 );
 
-layer_GoogleSatellite_0;
 map.addLayer(layer_GoogleSatellite_0);
+
 
         function pop_CURVEDILIVELLOPASSO5M_1(feature, layer) {
             var popupContent = '<table>\
